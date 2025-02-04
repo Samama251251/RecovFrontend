@@ -137,7 +137,6 @@ export const ReportForm: React.FC<ReportFormProps> = ({ title , formType}) => {
     };
     report["userName"] = report["name"];
     delete report["name"];
-    let url;
     console.log(report);
     const data = new FormData();
     data.append("file", image);
@@ -245,10 +244,9 @@ export const ReportForm: React.FC<ReportFormProps> = ({ title , formType}) => {
               <Button
                 className="w-full h-16 bg-gray-900 text-white text-xl hover:bg-gray-800 focus:ring-gray-500 rounded-xl py-4 animate-fade-in-up"
                 type="submit"
-                onClick={handleSubmit}
-                disabled={isSubmitting} // Disable the button when the form is being submitted
+                disabled={isSubmitting}
               >
-                {isSubmitting ? <FormLoader top={"1.5rem"}/> : 'Submit'} {/* Render the loader when the form is being submitted */}
+                {isSubmitting ? <FormLoader top={"1.5rem"}/> : 'Submit'}
               </Button>
             </>
           )}
@@ -285,7 +283,7 @@ export const FoundDetails: React.FC<FoundDetailsProps> = ({
     const lastChar = input.charAt(input.length - 1);
     if (
       !lastChar.match(/[0-9/]/) &&
-      e.nativeEvent.inputType !== "deleteContentBackward"
+      (e.nativeEvent as InputEvent).inputType !== "deleteContentBackward"
     ) {
       input = input.substring(0, input.length - 1);
     }
@@ -298,12 +296,12 @@ export const FoundDetails: React.FC<FoundDetailsProps> = ({
     // Add slashes after the 2nd and 5th characters
     if (
       (input.length === 2 || input.length === 5) &&
-      e.nativeEvent.inputType !== "deleteContentBackward"
+      (e.nativeEvent as InputEvent).inputType !== "deleteContentBackward"
     ) {
       input += "/";
     } else if (
       (input.length === 3 || input.length === 6) &&
-      e.nativeEvent.inputType === "deleteContentBackward"
+      (e.nativeEvent as InputEvent).inputType === "deleteContentBackward"
     ) {
       input = input.slice(0, -1);
     }
