@@ -163,7 +163,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({ title , formType}) => {
         console.log(report);
 
         const reportResponse = await fetch(
-          "http://localhost:3000/api/v1/items",
+          "https://recov-backend.vercel.app/api/v1/items",
           {
             method: "POST",
             mode: "cors",

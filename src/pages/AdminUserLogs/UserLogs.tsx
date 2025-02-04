@@ -17,7 +17,7 @@ export default function AdminReportLogs() {
     try {
       console.log("Fetching data ");
       const response = await fetch(
-          `http://localhost:3000/api/v1/claim/getClaim?page=${currentPage}`
+          `https://recov-backend.vercel.app/api/v1/claim/getClaim?page=${currentPage}`
       );
       const data = await response.json();
       if (!response.ok) {

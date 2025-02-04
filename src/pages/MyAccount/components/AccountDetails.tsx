@@ -22,7 +22,7 @@ export const AccountDetails = () => {
   const getInfo = async () => {
     try {
       const response = await fetch(
-          "http://localhost:3000/api/v1/getUserDetails",
+          "https://recov-backend.vercel.app/api/v1/getUserDetails",
           {
             method: "POST",
             headers: {
@@ -89,7 +89,7 @@ export const AccountDetails = () => {
         try {
           // Send patch request to update password
           const response = await fetch(
-              "http://localhost:3000/api/v1/updatePassword",
+              "https://recov-backend.vercel.app/api/v1/updatePassword",
               {
                 method: "PATCH",
                 headers: {

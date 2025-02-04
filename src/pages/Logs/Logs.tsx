@@ -9,7 +9,7 @@ const fetchItemsForPage = async (page) => {
   try {
     console.log("Fetching items");
     const response = await fetch(
-      `http://localhost:3000/api/v1/items?page=${page}`
+      `https://recov-backend.vercel.app/api/v1/items?page=${page}`
     );
     const data = await response.json();
     console.log("Fetched items", data.items);

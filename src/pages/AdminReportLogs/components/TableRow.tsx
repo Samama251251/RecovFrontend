@@ -17,7 +17,7 @@ export function TableRow({
                                  const claimId = data._id;
                                  console.log("Claim ID", claimId);
                                  const response = await fetch(
-                                     `http://localhost:3000/api/v1/items/acceptRequest?claimId=${claimId}`,
+                                     `https://recov-backend.vercel.app/api/v1/items/acceptRequest?claimId=${claimId}`,
                                      {
                                        method: "PATCH",
                                      }
@@ -36,7 +36,7 @@ export function TableRow({
                                  const claimId = data._id;
                                  console.log("Claim ID", claimId);
                                  const response = await fetch(
-                                     `http://localhost:3000/api/v1/items/rejectRequest?claimId=${claimId}`,
+                                     `https://recov-backend.vercel.app/api/v1/items/rejectRequest?claimId=${claimId}`,
                                      {
                                        method: "PATCH",
                                        body: JSON.stringify(data),
@@ -57,7 +57,7 @@ export function TableRow({
                                  const claimId = data._id;
                                  console.log("Claim ID", claimId);
                                  const response = await fetch(
-                                     `http://localhost:3000/api/v1/claim/deleteClaim?claimId=${claimId}`,
+                                     `https://recov-backend.vercel.app/api/v1/claim/deleteClaim?claimId=${claimId}`,
                                      {
                                        method: "DELETE",
                                      }
@@ -198,7 +198,7 @@ export function TableRow({
 //         const claimId = data._id;
 //         console.log("Claim ID", claimId);
 //         const response = await fetch(
-//           `http://localhost:3000/api/v1/items/acceptRequest?claimId=${claimId}`,
+//           `https://recov-backend.vercel.app/api/v1/items/acceptRequest?claimId=${claimId}`,
 //           {
 //             method: "PATCH",
 //           }
@@ -217,7 +217,7 @@ export function TableRow({
 //         const claimId = data._id;
 //         console.log("Claim ID", claimId);
 //         const response = await fetch(
-//           `http://localhost:3000/api/v1/items/rejectRequest?claimId=${claimId}`,
+//           `https://recov-backend.vercel.app/api/v1/items/rejectRequest?claimId=${claimId}`,
 //           {
 //             method: "PATCH",
 //           }

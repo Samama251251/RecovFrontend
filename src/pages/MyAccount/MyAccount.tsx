@@ -20,7 +20,7 @@ export default function MyAccount() {
         console.log("Here Goes The Token", token);
         console.log(JSON.stringify({ token }));
         const response = await fetch(
-          "http://localhost:3000/api/v1/items/userItems",
+          "https://recov-backend.vercel.app/api/v1/items/userItems",
           {
             method: "GET",
             headers: {

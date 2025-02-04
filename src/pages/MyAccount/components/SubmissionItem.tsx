@@ -18,7 +18,7 @@ const deleteSubmissionAndLog = async (submissionId, onDelete) => {
     try {
         // Delete the submission
         const response = await fetch(
-            `http://localhost:3000/api/v1/items/deleteRequest?submissionId=${submissionId}`,
+            `https://recov-backend.vercel.app/api/v1/items/deleteRequest?submissionId=${submissionId}`,
             {
                 method: "DELETE",
                 headers: {

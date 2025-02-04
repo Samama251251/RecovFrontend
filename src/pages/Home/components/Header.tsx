@@ -102,7 +102,7 @@ function NotificationsComponent() {
     // Replace with your actual API call
     console.log("token in notifications", token);
     console.log("Hello");
-    fetch("http://localhost:3000/api/v1/notifications", {
+    fetch("https://recov-backend.vercel.app/api/v1/notifications", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

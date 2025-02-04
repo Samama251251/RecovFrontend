@@ -20,7 +20,7 @@ export default function AdminDashboard() {
   const [barChartData, setBarChartData] = useState([]);
   const [recentTablesData, setRecentTablesData] = useState([]);
   const getStats = async () => {
-    const response = await fetch("http://localhost:3000/api/v1/items/stats");
+    const response = await fetch("https://recov-backend.vercel.app/api/v1/items/stats");
     const data = await response.json();
     setTotalLostItems(data.data.totalLostItems);
     setTotalFoundItems(data.data.totalFoundItems);

@@ -23,7 +23,7 @@ export default function ClaimLogs() {
     try {
       console.log("Fetching data ");
       const response = await fetch(
-          `http://localhost:3000/api/v1/claim/getClaim?page=${page}`
+          `https://recov-backend.vercel.app/api/v1/claim/getClaim?page=${page}`
       );
       const data = await response.json();
       if (!response.ok) {

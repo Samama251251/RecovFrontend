@@ -113,7 +113,7 @@ function FormComponent({ onClose, itemId }) {
         const createNewClaim = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:3000/api/v1/claim/createClaim",
+                    "https://recov-backend.vercel.app/api/v1/claim/createClaim",
                     {
                         method: "POST",
                         headers: {
