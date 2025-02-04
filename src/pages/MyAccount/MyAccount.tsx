@@ -5,20 +5,25 @@ import { SubmissionsList } from "./components/SubmissionList.tsx";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/userContext.tsx";
 
+interface Submission {
+  id: string;
+  title: string;
+  date: string;
+  status: "Found" | "Lost";
+}
+
 export default function MyAccount() {
-  const [submissions, setSubmissions] = useState([]);
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<Error | null>(null);
   const { token } = useUserContext();
 
   useEffect(() => {
     const fetchSubmissions = async () => {
-      setIsLoading(true); // Set loading state to true before fetching items
-      setError(null); // Reset error state before fetching items
+      setIsLoading(true);
+      setError(null);
+      
       try {
-        console.log("Hello Samama");
-        console.log("Here Goes The Token", token);
-        console.log(JSON.stringify({ token }));
         const response = await fetch(
           "https://recov-backend.vercel.app/api/v1/items/userItems",
           {
@@ -28,37 +33,46 @@ export default function MyAccount() {
             },
           }
         );
-        console.log("I am after the api call");
+
         if (!response.ok) {
           throw new Error("Failed to fetch submissions");
         }
+
         const data = await response.json();
-        const submissionsToPass = data.data.items;
-        console.log("I am before settingSubmusssions", submissionsToPass);
-        setSubmissions(submissionsToPass);
-        console.log(submissions);
-      } catch (error) {
-        setError(error); // Set error state if there's an error
+        // Transform API data to match Submission interface if necessary
+        const transformedSubmissions: Submission[] = data.data.items.map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          date: item.createdAt,
+          status: item.status as "Found" | "Lost"
+        }));
+        setSubmissions(transformedSubmissions);
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error('An error occurred'));
       } finally {
-        setIsLoading(false); // Set loading state to false after fetching items
+        setIsLoading(false);
       }
     };
-    console.log("I am in Use Effect 2");
-    // Fetch items whenever the currentPage changes
+
     fetchSubmissions();
-  }, []); // Dependency on currentPage
+  }, [token]);
 
   return (
     <main className="container mx-auto py-12 px-12 md:px-6">
       <div className="space-y-8">
         <div className="space-y-4">
-          <Header title="My Account" paragraph="" iconSize="h-28 w-28" />{" "}
+          <Header title="My Account" paragraph="" iconSize="h-28 w-28" />
           <AccountDetails />
         </div>
         <div className="space-y-8">
           <div className="space-y-4">
             <h2 className="text-4xl my-2 font-semibold">Ongoing Submissions</h2>
-            <SubmissionsList submissions={submissions} />
+            {error && <div className="text-red-500">Error: {error.message}</div>}
+            {isLoading ? (
+              <div>Loading...</div>
+            ) : (
+              <SubmissionsList submissions={submissions} />
+            )}
           </div>
         </div>
       </div>

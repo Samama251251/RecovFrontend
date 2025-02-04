@@ -1,5 +1,4 @@
 // NotFoundPage.tsx
-import React from 'react';
 import { Button } from "../../../@/components/ui/button"
 import {  DialogTitle, DialogDescription, DialogHeader, DialogFooter, DialogContent, Dialog } from "../../../@/components/ui/dialog"
 import { Label } from "../../../@/components/ui/label"

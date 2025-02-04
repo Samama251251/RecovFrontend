@@ -16,9 +16,8 @@ export default function AdminDashboard() {
   const [pendingReports, setPendingReports] = useState(0);
   const [resolvedReports, setResolvedReports] = useState(0);
 
-  const [pieChartData, setPieChartData] = useState([]);
+  // const [pieChartData, setPieChartData] = useState([]);
   const [barChartData, setBarChartData] = useState([]);
-  const [recentTablesData, setRecentTablesData] = useState([]);
   const getStats = async () => {
     const response = await fetch("https://recov-backend.vercel.app/api/v1/items/stats");
     const data = await response.json();

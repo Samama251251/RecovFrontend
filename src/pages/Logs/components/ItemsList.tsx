@@ -68,7 +68,7 @@ export function ItemsList({ items, sortOption }: ItemsListProps) {
         break;
       case "dateReported":
         newSortedItems = [...items].sort(
-          (a, b) => new Date(a.date) - new Date(b.date)
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
         );
         break;
       case "status":

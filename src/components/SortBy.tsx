@@ -1,7 +1,13 @@
 import { ArrowUpDownIcon
 } from "../../public/itemIcons/itemIcons.tsx";
 
-export  function SortBy({ selectedOption, setSelectedOption, options }) {
+interface SortByProps {
+    selectedOption: string;
+    setSelectedOption: (option: string) => void;
+    options: { value: string; label: string; }[];
+}
+
+export function SortBy({setSelectedOption, options }: SortByProps) {
     const handleChange = (event) => {
         setSelectedOption(event.target.value);
     };

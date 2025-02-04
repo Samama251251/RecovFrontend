@@ -9,8 +9,9 @@ export default function AdminReportLogs() {
   const [currentPage, setCurrentPage] = useState(1);
   const [claimData, setClaimData] = useState([]);
   const [isLoading, setIsLoading] = useState(false); // Added for loading state
-  const [error, setError] = useState(null); // Added for error handling
+  const [error, setError] = useState<string | null>(null); // Added for error handling
   const [totalPages, setTotalPages] = useState(1); // Added for pagination
+  const [selectedOption, setSelectedOption] = useState("newest"); // Add this for LogsHeader
 
   const getClaimData = async () => {
     setIsLoading(true); // Set loading state to true before fetching data
@@ -26,7 +27,7 @@ export default function AdminReportLogs() {
         setClaimData(data.data);
         setTotalPages(data.totalPages); // Set total pages
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
       setError(err.message); // Set error state
     } finally {
@@ -38,8 +39,13 @@ export default function AdminReportLogs() {
     getClaimData();
   }, [currentPage]);
 
-  const handleDelete = async (itemToDelete) => {
-    // Implement delete functionality here
+  const handleDelete = async (itemToDelete: string) => {
+    // Implementation here
+    console.log('Deleting:', itemToDelete);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
   };
 
   // Added error message display
@@ -53,6 +59,8 @@ export default function AdminReportLogs() {
             title="User Logs"
             placeholder="          User Claim logs..."
             baseRoute="/home/user-logs"
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
         />
         {isLoading && <ListLoader/>}
         {!isLoading && (
@@ -61,7 +69,7 @@ export default function AdminReportLogs() {
               <Pagination
                   currentPage={currentPage}
                   totalPages={totalPages} // This should be calculated based on total number of records
-                  baseRoute="/home/claim-logs"
+                  onPageChange={handlePageChange}
               />
             </>
         )}

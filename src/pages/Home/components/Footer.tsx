@@ -8,7 +8,6 @@ type ProgressSectionProps = {
 
 
 export const Footer: React.FC<ProgressSectionProps> = ({ value, max }) => (
-
   <div className="flex flex-col items-center justify-center">
     <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
       Lost Items Found
@@ -17,11 +16,11 @@ export const Footer: React.FC<ProgressSectionProps> = ({ value, max }) => (
       <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
         <div
           className="h-full bg-gray-950"
-          style={{ width: `${(4 / 5) * 100}%` }}
+          style={{ width: `${(value / max) * 100}%` }}
         />
       </div>
       <p className="text-gray-600 text-xl dark:text-gray-400 mt-4 text-center">
-        90% of lost items have been found.
+        {Math.round((value / max) * 100)}% of lost items have been found.
       </p>
     </div>
   </div>

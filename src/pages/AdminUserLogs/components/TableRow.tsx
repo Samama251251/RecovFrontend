@@ -2,25 +2,30 @@
 import { Button } from "../../../../@/components/ui/button";
 import {
   Trash2Icon,
-  XIcon,
-  CheckIcon,
-  EyeIcon,
 } from "../../../../public/itemIcons/itemIcons.tsx";
-import { useState } from "react";
+
+interface TableRowData {
+  user: {
+    fullName: string;
+    email: string;
+  };
+  item: {
+    itemName: string;
+    description: string;
+  };
+  status: "Pending" | "Accepted" | "Rejected";
+  createdAt: string;
+}
+
+interface TableRowProps {
+  data: TableRowData;
+  onDelete: () => void;
+}
 
 export function TableRow({
   data,
-  onAccept = () => console.log("Accepted clicked"),
-  onReject = () => console.log("Reject clicked"),
   onDelete = () => console.log("Delete clicked"),
-}) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleViewDetails = (data) => {
-    console.log("View Details clicked", data);
-    setIsModalOpen(true);
-  };
-
+}: TableRowProps) {
   let statusColor;
   if (data.status === "Pending") {
     statusColor = "bg-yellow-100";
@@ -59,7 +64,7 @@ export function TableRow({
             {new Date(data.createdAt).toLocaleDateString()}
           </h1>
           <Button
-            onClick={() => onDelete()}
+            onClick={onDelete}
             className="px-4 py-6 text-red-500 hover:bg-red-100 focus:ring-red-500"
             size="sm"
             variant="outline"

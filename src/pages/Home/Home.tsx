@@ -14,8 +14,8 @@ import {
 export default function Home({ isLoggedIn }) {
     const navigate = useNavigate();
     const outlet = useOutlet();
-    const [value, setValue] = useState(0);
-    const [max, setMax] = useState(0);
+    const [value] = useState(90);
+    const [max] = useState(100);
 
     useEffect(() => {
         if (!isLoggedIn) {

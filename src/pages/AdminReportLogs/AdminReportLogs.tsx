@@ -66,7 +66,6 @@ export default function AdminReportLogs() {
               <Pagination
                   currentPage={currentPage}
                   totalPages={totalPages}
-                  baseRoute="/home/claim-logs"
                   onPageChange={(newPage) => {
                     setCurrentPage(newPage);
                     fetchClaimData(newPage);
