@@ -1,30 +1,35 @@
-# React + TypeScript + Vite
+# Recov - Lost and Found Frontend  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Recov is a lost and found tracking system built with the MERN stack. This repository contains the frontend, providing a user-friendly interface for reporting, managing, and tracking lost and found items.  
 
-Currently, two official plugins are available:
+## Features  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication and profile management  
+- Report lost and found items with images  
+- View and search lost & found reports  
+- Admin dashboard for managing reports  
+- Responsive UI for seamless user experience  
 
-## Expanding the ESLint configuration
+## Tech Stack  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend**: React.js, Vite  
+- **UI Library**: TailwindCSS, Shadcn  
+- **State Management**: Redux Toolkit
+- **Authentication**: JWT Tokens
+## Installation  
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone the repository:  
+   ```sh
+   git clone https://github.com/samama251351/recov-frontend.git  
+   cd recov-frontend  
+   ```  
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+2. Install dependencies:  
+   ```sh
+   npm install  
+   ```  
+4. Start the development server:  
+   ```sh
+   npm run dev  
+   ```  
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
